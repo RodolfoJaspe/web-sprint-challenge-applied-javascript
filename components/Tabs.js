@@ -1,3 +1,23 @@
+import axios from "axios";
+
+axios.get("https://lambda-times-api.herokuapp.com/topics").then(response => {
+    const topics = response.data.topics;
+
+    topics.forEach(topic => {
+        function tabMaker (){
+            const tab = document.createElement("div");
+            tab.classList.add("tab");
+            tab.textContent = topic;
+
+            return tab
+        }
+
+        const topicsDiv = document.querySelector("div.topics");
+        topicsDiv.appendChild(tabMaker());    
+    })
+
+})
+.catch(err => console.log("error", err));
 // STEP 2: Create tabs
 // -----------------------
 // Using axios send a GET request to the address: https://lambda-times-api.herokuapp.com/topics
