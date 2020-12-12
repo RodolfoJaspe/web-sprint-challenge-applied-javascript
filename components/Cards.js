@@ -2,10 +2,8 @@ const { default: Axios } = require("axios");
 
 axios.get("https://lambda-times-api.herokuapp.com/articles").then(response => {
     const articles = response.data.articles;
-    console.log(articles);
 
-    let articlesArray = Object.keys(articles).map(a => a);
-    console.log(articlesArray);
+    const articlesArray = Object.keys(articles).map(a => a);
 
     const cardsContainer = document.querySelector("div.cards-container");
     
@@ -15,7 +13,7 @@ axios.get("https://lambda-times-api.herokuapp.com/articles").then(response => {
 
                 const cardDiv = document.createElement("div");
                 cardDiv.classList.add("card");
-                cardDiv.addEventListener("click", e => console.log(e.target.innerHTML));
+                cardDiv.addEventListener("click", e => console.log(article.headline));
     
                 const headline = document.createElement("div");
                 headline.classList.add("headline");
@@ -35,8 +33,9 @@ axios.get("https://lambda-times-api.herokuapp.com/articles").then(response => {
                 imgContainer.appendChild(img);  
     
                 return cardDiv
-            }} 
-            cardsContainer.appendChild(articleMaker(articleObj)))
+            }
+            cardsContainer.appendChild(articleMaker(articleObj))
+        } )
     })  
     
 
