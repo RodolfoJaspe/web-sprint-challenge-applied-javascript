@@ -2,10 +2,9 @@ import axios from "axios";
 
 axios.get("https://lambda-times-api.herokuapp.com/topics").then(response => {
     const topics = response.data.topics;
-    console.log(topics);
 
     topics.forEach(topic => {
-        function tabMaker (arr){
+        function tabMaker (){
             const tab = document.createElement("div");
             tab.classList.add("tab");
             tab.textContent = topic;
@@ -14,7 +13,7 @@ axios.get("https://lambda-times-api.herokuapp.com/topics").then(response => {
         }
 
         const topicsDiv = document.querySelector("div.topics");
-        topicsDiv.appendChild(tabMaker(topics));    
+        topicsDiv.appendChild(tabMaker());    
     })
 
 })
